@@ -2,34 +2,30 @@ import subprocess
 import sys
 import os
 
+ImageListFilePath="all_images_list.txt"
+with open(ImageListFilePath, 'r', encoding='utf-8') as f:
+    ImageList = f.readlines()
+    ImageListNum = len(ImageList)
 
-def get_image_paths_from_range(start_line, end_line, list_file="all_images_list.txt"):
+def get_image_paths_from_range(start_line, end_line):
     """
     根据行号起终点，从all_images_list.txt中获取对应区间的图片路径
     
     Args:
         start_line: 起始行号（从1开始）
         end_line: 结束行号（包含）
-        list_file: 图片列表文件路径
     
     Returns:
         list: 图片路径列表
     """
     image_paths = []
     
-    if not os.path.exists(list_file):
-        print(f"错误：文件 {list_file} 不存在")
-        return []
-    
-    with open(list_file, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    
     # 行号从1开始，所以转换为0-based索引
     start_index = max(0, start_line - 1)
-    end_index = min(len(lines), end_line)
+    end_index = min(ImageListNum, end_line)
     
     for i in range(start_index, end_index):
-        line = lines[i].strip()
+        line = ImageList[i].strip()
         if line:
             image_paths.append(line)
     
@@ -153,12 +149,9 @@ def main(start_line, end_line):
 
 
 if __name__ == "__main__":
-    i = 16
-    while i < 1690 + 15:
-        if i > 1690:
-            target = 1690
-        else:
-            target = i
-        main(i - 15, target)
-        i += 15
+    batchNum = 15
+    i = 16 + batchNum
+    while i < ImageListNum + batchNum:
+        main(i - batchNum + 1, i)
+        i += batchNum
         
