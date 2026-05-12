@@ -55,23 +55,30 @@ def call_codebuddy_for_images(image_paths):
     files_str = "\n".join(image_paths)
     prompt = f"""你是图片描述助手。你的任务是逐个读取以下图片，用AI视觉能力观察每张图片的内容，然后为每张图片生成一段中文描述
 **重要规则：**
-1. 必须使用 Read 工具逐个读取每张图片文件路径来查看图片内容
-2. 绝对不能根据文件名猜测内容——必须实际读取图片
-3. 不能写脚本批量处理，必须逐张读取并描述
-4. 每张图片描述格式：`【文件名】描述文字`
+1.必须使用Read工具逐个读取每张图片文件路径来查看图片内容
+2.绝对不能根据文件名猜测内容——必须实际读取图片
+3.不能写脚本批量处理，必须逐张读取并描述
+4.每张图片描述格式：`【文件名】描述文字`
+5.你的回答中，除了图片描述，**不要包含其它任何对用户的额外询问**，如“图片数量很多，你希望我怎么办”，你只管逐个描述就行了
+6.绝对不能查看除了给出的图片外的其它文件
 
-以下是需要描述的图片列表：
+以下是需要描述的图片列表，处理且仅处理这{len(image_paths)}张，不能多也不能少，绝对不能查看除了给出的图片外的其它文件：
 {files_str}"""
-    
-    print(f"正在调用codebuddy处理 {len(image_paths)} 张图片...")
+    print('\n' + prompt + '\n')
+    # 将prompt写入task.md文件
+    prompt_file = "task.md"
+    with open(prompt_file, 'w', encoding='utf-8') as f:
+        f.write(prompt)
     
     try:
+        print(f"正在调用codebuddy处理 {len(image_paths)} 张图片...")
         # 调用codebuddy -p命令
         result = subprocess.run(
-            ["codebuddy", "-p", prompt, "--model", "Kimi-K2.5"],
+            f'codebuddy -p "读取{prompt_file}获取你要执行的任务" --model Kimi-K2.5',
             capture_output=True,
             text=True,
-            encoding='utf-8'
+            encoding='utf-8',
+            shell=True
         )
         
         if result.returncode != 0:
@@ -114,25 +121,8 @@ def append_to_result(text, result_file="result.txt"):
         return False
 
 
-def main():
+def main(start_line, end_line):
     """主函数：按1-2-3顺序进行函数调用"""
-    
-    # 解析命令行参数
-    if len(sys.argv) < 3:
-        print("用法: python describe_images.py <起始行号> <结束行号>")
-        print("示例: python describe_images.py 1 10")
-        sys.exit(1)
-    
-    try:
-        start_line = int(sys.argv[1])
-        end_line = int(sys.argv[2])
-    except ValueError:
-        print("错误：行号必须是整数")
-        sys.exit(1)
-    
-    if start_line < 1 or end_line < 1:
-        print("错误：行号必须大于等于1")
-        sys.exit(1)
     
     print(f"=== 开始处理第{start_line}行到第{end_line}行的图片 ===")
     
@@ -146,7 +136,9 @@ def main():
     # 步骤2：调用codebuddy生成描述
     descriptions = call_codebuddy_for_images(image_paths)
     
-    if not descriptions:
+    if descriptions:
+        print('\n' + descriptions + '\n')
+    else:
         print("未生成任何描述")
         sys.exit(1)
     
@@ -161,4 +153,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    i = 16
+    while i < 1690 + 15:
+        if i > 1690:
+            target = 1690
+        else:
+            target = i
+        main(i - 15, target)
+        i += 15
+        
