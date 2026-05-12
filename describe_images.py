@@ -3,14 +3,14 @@ import sys
 import os
 import time
 
-ImageListFilePath="all_images_list.txt"
+ImageListFilePath="images_list_lite.txt"
 with open(ImageListFilePath, 'r', encoding='utf-8') as f:
     ImageList = f.readlines()
     ImageListNum = len(ImageList)
 
 def get_image_paths_from_range(start_line, end_line):
     """
-    根据行号起终点，从all_images_list.txt中获取对应区间的图片路径
+    根据行号起终点，从ImageList中获取对应区间的图片路径
     
     Args:
         start_line: 起始行号（从1开始）
@@ -61,7 +61,7 @@ def call_codebuddy_for_images(image_paths):
 
 以下是需要描述的图片列表，处理且仅处理这{len(image_paths)}张，不能多也不能少：
 {files_str}"""
-    print('\n' + prompt + '\n')
+    print('\n' + files_str + '\n')
     # 将prompt写入task.md文件
     prompt_file = "task.md"
     with open(prompt_file, 'w', encoding='utf-8') as f:
@@ -143,7 +143,7 @@ def main(start_line, end_line):
             sys.exit(1)
     else:
         print("未生成任何描述，重新执行")
-        time.sleep(10)
+        time.sleep(30)
         main(start_line, end_line)
     
 
