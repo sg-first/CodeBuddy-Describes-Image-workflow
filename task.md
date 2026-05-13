@@ -5,21 +5,15 @@
 3.不能写脚本批量处理，必须逐张读取并描述
 4.每张图片描述格式：`【文件名】描述文字`
 5.你的回答中，除了图片描述，**不要包含其它任何对用户的额外询问**，如“图片数量很多，你希望我怎么办”，你只管逐个描述就行了
-6.绝对不能查看除了给出的图片外的其它文件
+6.不允许查看除了给出的图片外的其它文件
+7.不允许一次性返回多个tool call，tool call必须是单个
 
-以下是需要描述的图片列表，处理且仅处理这15张，不能多也不能少：
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_QZMD.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_SZQS.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_TFAM.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_TGJJ.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_TGYH.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_TXGX.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_TZGJ.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_WCSJ.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_WZHX.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_XBW.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_XYTX.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_YGZQ.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_YQGX.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_YTWJ.png
-UITextures\Dynamic\Skill\T_Lord_Skill_Icon_YYDL.png
+以下是需要描述的图片列表，处理且仅处理这8张，不能多也不能少：
+UITextures\Interface\VIP\T_Icon_VIP_3.png
+UITextures\Interface\VIP\T_Icon_VIP_4.png
+UITextures\Interface\VIP\T_Icon_VIP_5.png
+UITextures\Interface\VIP\T_Icon_VIP_6.png
+UITextures\Interface\VIP\T_Icon_VIP_7.png
+UITextures\Interface\VIP\T_Icon_VIP_8.png
+UITextures\Interface\World\T_Hud_Icon_Harm_NormalAttack.png
+UITextures\Interface\World\T_Hud_Icon_Harm_SkillAttack.png

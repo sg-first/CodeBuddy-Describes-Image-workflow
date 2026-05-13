@@ -3,6 +3,7 @@ import sys
 import os
 import time
 
+StartPos = 0
 ImageListFilePath="images_list_lite.txt"
 with open(ImageListFilePath, 'r', encoding='utf-8') as f:
     ImageList = f.readlines()
@@ -57,7 +58,8 @@ def call_codebuddy_for_images(image_paths):
 3.不能写脚本批量处理，必须逐张读取并描述
 4.每张图片描述格式：`【文件名】描述文字`
 5.你的回答中，除了图片描述，**不要包含其它任何对用户的额外询问**，如“图片数量很多，你希望我怎么办”，你只管逐个描述就行了
-6.绝对不能查看除了给出的图片外的其它文件
+6.不允许查看除了给出的图片外的其它文件
+7.不允许一次性返回多个tool call，tool call必须是单个
 
 以下是需要描述的图片列表，处理且仅处理这{len(image_paths)}张，不能多也不能少：
 {files_str}"""
@@ -150,7 +152,7 @@ def main(start_line, end_line):
 
 if __name__ == "__main__":
     batchNum = 15
-    i = 0 + batchNum
+    i = StartPos + batchNum
     while i < ImageListNum + batchNum:
         main(i - batchNum + 1, i)
         i += batchNum
