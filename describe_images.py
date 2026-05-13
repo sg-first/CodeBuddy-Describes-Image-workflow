@@ -59,7 +59,6 @@ def call_codebuddy_for_images(image_paths):
 4.每张图片描述格式：`【文件名】描述文字`
 5.你的回答中，除了图片描述，**不要包含其它任何对用户的额外询问**，如“图片数量很多，你希望我怎么办”，你只管逐个描述就行了
 6.不允许查看除了给出的图片外的其它文件
-7.不允许一次性返回多个tool call，tool call必须是单个
 
 以下是需要描述的图片列表，处理且仅处理这{len(image_paths)}张，不能多也不能少：
 {files_str}"""
@@ -135,16 +134,19 @@ def main(start_line, end_line):
     # 步骤2：调用codebuddy生成描述
     descriptions = call_codebuddy_for_images(image_paths)
     print('\n' + descriptions + '\n')
-    if descriptions and '【' in descriptions and '】' in descriptions:
-        # 步骤3：将结果追加到result.txt
+
+    # 检查输出是否正确
+    imageNum = len(image_paths)
+    if descriptions and descriptions.count('【') == imageNum and descriptions.count('】') == imageNum:
+        # 步骤 3：将结果追加到 result.txt
         success = append_to_result(descriptions)
         if success:
-            print(f"=== 处理完成，结果已保存到result.txt ===")
+            print(f"=== 处理完成，结果已保存到 result.txt ===")
         else:
             print("=== 处理失败 ===")
             sys.exit(1)
     else:
-        print("未生成任何描述，重新执行")
+        print("输出不符合要求，重新执行")
         time.sleep(30)
         main(start_line, end_line)
     

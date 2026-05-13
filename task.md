@@ -6,14 +6,20 @@
 4.每张图片描述格式：`【文件名】描述文字`
 5.你的回答中，除了图片描述，**不要包含其它任何对用户的额外询问**，如“图片数量很多，你希望我怎么办”，你只管逐个描述就行了
 6.不允许查看除了给出的图片外的其它文件
-7.不允许一次性返回多个tool call，tool call必须是单个
 
-以下是需要描述的图片列表，处理且仅处理这8张，不能多也不能少：
-UITextures\Interface\VIP\T_Icon_VIP_3.png
-UITextures\Interface\VIP\T_Icon_VIP_4.png
-UITextures\Interface\VIP\T_Icon_VIP_5.png
-UITextures\Interface\VIP\T_Icon_VIP_6.png
-UITextures\Interface\VIP\T_Icon_VIP_7.png
-UITextures\Interface\VIP\T_Icon_VIP_8.png
-UITextures\Interface\World\T_Hud_Icon_Harm_NormalAttack.png
-UITextures\Interface\World\T_Hud_Icon_Harm_SkillAttack.png
+以下是需要描述的图片列表，处理且仅处理这15张，不能多也不能少：
+UITextures\Common\Button\T_Common_Button_Addbig.png
+UITextures\Common\Button\T_Common_Button_Addsmall.png
+UITextures\Common\Button\T_Common_Button_Close.png
+UITextures\Common\Button\T_Common_Button_Collect.png
+UITextures\Common\Button\T_Common_Button_Deleteicon.png
+UITextures\Common\Button\T_Common_Button_Details.png
+UITextures\Common\Button\T_Common_Button_DropdownArrow.png
+UITextures\Common\Button\T_Common_Button_JumpArrow.png
+UITextures\Common\Button\T_Common_Button_Lockicon.png
+UITextures\Common\Button\T_Common_Button_NextArrow.png
+UITextures\Common\Button\T_Common_Button_Open.png
+UITextures\Common\Button\T_Common_Button_Postionicon.png
+UITextures\Common\Button\T_Common_Button_Questionmark.png
+UITextures\Common\Button\T_Common_Button_Reducebig.png
+UITextures\Common\Button\T_Common_Button_ReduceSmall.png
