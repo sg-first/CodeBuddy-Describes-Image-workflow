@@ -150,7 +150,7 @@ def main(start_line, end_line):
 
 if __name__ == "__main__":
     batchNum = 15
-    i = 271 + batchNum
+    i = 0 + batchNum
     while i < ImageListNum + batchNum:
         main(i - batchNum + 1, i)
         i += batchNum
