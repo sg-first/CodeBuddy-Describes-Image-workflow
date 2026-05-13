@@ -30,4 +30,5 @@
 
 使用结果
 ----------
-把`result.txt`改名，覆盖`Saved\TextureExports\Dynamic\image_describe.txt`
+1. 运行`remove_empty_lines.py`删除空行，最好再人工看一下`result.txt`，里面一些无关的AI自白也删掉
+2. 把`result.txt`改名，覆盖`Saved\TextureExports\Dynamic\image_describe.txt`
