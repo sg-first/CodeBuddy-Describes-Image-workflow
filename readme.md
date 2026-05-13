@@ -21,14 +21,14 @@
 错误处理
 ----------
 ### 中断后继续
-如果因某些原因必须中断`generate_image_list.py`重新运行（如一直在print**“未生成任何描述”**，需要切换模型），下次需要接着运行，按以下步骤操作：
+如果因某些原因必须中断`describe_images.py`重新运行（如一直在print**未生成任何描述**，需要切换模型），下次需要接着运行，按以下步骤操作：
 1. 看`result.txt`最下面，目前最新处理完的图片
-2. 在`images_list_full.txt`中搜索这个图片文件名，记录行号，把`describe_images.py`开头的`StartPos`值改为这个行号
+2. 在`images_list_full.txt`中搜索这个图片文件名，记录行号，把`describe_images.py`开头的`StartPos`值改为这个行号，然后重新运行
 
 ### 选择模型
 按价格排序：Kimi-K2.5 < Kimi-K2.6 ≈ GLM-5v-Turbo ≈ GPT-5.1
 
 使用结果
 ----------
-1. 运行`remove_empty_lines.py`删除空行，最好再人工看一下`result.txt`，里面一些无关的AI自白也删掉
+1. 运行`remove_empty_lines.py`删除空行。最好再人工看一下`result.txt`，里面一些无关的AI自白也删掉
 2. 把`result.txt`改名，覆盖`Saved\TextureExports\Dynamic\image_describe.txt`
