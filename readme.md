@@ -3,6 +3,10 @@
 -----------
 使用编辑器工具`TextureExport`导出所有资产为图片，会导出到`Saved\TextureExports\Dynamic\UITextures`目录
 
+安装CodeBuddy CLI
+-----------
+执行`npm install -g @tencent-ai/codebuddy-code`
+
 生成图片路径列表
 -----------
 1. 下载本仓库
