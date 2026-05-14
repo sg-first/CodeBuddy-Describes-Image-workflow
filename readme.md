@@ -1,3 +1,8 @@
+概述
+----------
+想要让agent还原设计图，需要在`Saved\TextureExports\Dynamic`下准备两样东西：`UITextures`和`image_describe.txt`
+* `UITextures`需要每个用户使用编辑器工具手动导出
+* `image_describe.txt`是对所有图片的描述，我传了，但当UITextures有新增时就需要更新
 
 导出所有要描述的图片
 -----------
